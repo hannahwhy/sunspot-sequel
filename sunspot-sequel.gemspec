@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "sunspot/sequel/version"
+require "sequel/plugins/sunspot/version"
 
 Gem::Specification.new do |s|
   s.name        = "sunspot-sequel"
-  s.version     = Sunspot::Sequel::VERSION
+  s.version     = Sequel::Plugins::Sunspot::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["David Yip"]
   s.email       = ["yipdw@member.fsf.org"]
