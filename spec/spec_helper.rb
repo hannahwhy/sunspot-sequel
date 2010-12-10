@@ -6,6 +6,10 @@ require 'sequel'
 
 DB = Sequel.sqlite
 
+DB.create_table(:widgets) do |t|
+  Integer :id, :primary_key => true
+end
+
 class Widget < Sequel::Model
   plugin :sunspot
 end

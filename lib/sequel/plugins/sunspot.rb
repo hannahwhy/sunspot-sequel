@@ -1,15 +1,20 @@
+require 'sequel/plugins/sunspot/data_accessor'
+
 module Sequel
   module Plugins
     module Sunspot
       ##
-      # Executed the first time this plugin is loaded for a model, unless
-      # the plugin was previously loaded by an ancestor class.
+      # Registers a Sunspot data accessor and instance adapter.
+      #
+      # This method is executed the first time this plugin is loaded for a
+      # model, unless the plugin was previously loaded by an ancestor class.
       #
       # This is required by Sequel's plugin interface.
       #
       # @param [Sequel::Model] model the model class
       # @param [Array] *args additional arguments
       def self.apply(model, *args, &block)
+        ::Sunspot::Adapters::DataAccessor.register(Sunspot::DataAccessor, Sequel::Model)
       end
 
       ##
