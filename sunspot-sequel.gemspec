@@ -24,4 +24,17 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'sequel'
   s.add_dependency 'sunspot'
+
+  [
+    ['autotest'],
+    ['ci_reporter', '~> 1.6'],
+    ['cucumber'],
+    ['extlib'],
+    ['rdiscount'],
+    ['rspec', '~> 2.0'],
+    ['sqlite3-ruby', '~> 1.2.0'],
+    ['yard']
+  ].each do |dependency|
+    s.add_development_dependency(*dependency)
+  end
 end
