@@ -3,7 +3,6 @@ Feature: Indexing Sequel models
   Users of this library
   Need to be able to send messages to Sequel models to initiate indexing
 
-  @wip
   Scenario: #index indexes a Sequel model without committing the changes
     Given a widget with the attributes
       | name | description |
