@@ -1,5 +1,5 @@
 task :get_rvm_version do
-  ruby_version = case ENV['RUBY_VERSION']
+  ruby_version = case ENV['SUNSPOT_SEQUEL_ENV']
     when 'ruby18' then 'ruby-1.8.7'
     when 'ruby19' then 'ruby-1.9.2'
   end
