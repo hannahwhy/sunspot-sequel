@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 module Sequel::Plugins::Sunspot
-  describe DataAccessor do
+  describe InstanceAdapter do
     let(:model) { Widget.new }
-    let(:accessor) { DataAccessor.new(model) }
+    let(:adapter) { InstanceAdapter.new(model) }
 
     before do
       model.id = 1
@@ -11,7 +11,7 @@ module Sequel::Plugins::Sunspot
 
     describe '#id' do
       it "returns the model's primary key" do
-        accessor.id.should == model.pk
+        adapter.id.should == model.pk
       end
     end
   end
