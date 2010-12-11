@@ -1,3 +1,4 @@
+require 'sequel/plugins/sunspot/data_accessor'
 require 'sequel/plugins/sunspot/instance_adapter'
 require 'sequel/plugins/sunspot/instance_methods'
 
@@ -15,6 +16,7 @@ module Sequel
       # @param [Sequel::Model] model the model class
       # @param [Array] *args additional arguments
       def self.apply(model, *args, &block)
+        ::Sunspot::Adapters::DataAccessor.register(Sunspot::DataAccessor, Sequel::Model)
         ::Sunspot::Adapters::InstanceAdapter.register(Sunspot::InstanceAdapter, Sequel::Model)
       end
 
