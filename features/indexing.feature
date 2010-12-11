@@ -29,3 +29,24 @@ Feature: Indexing Sequel models
     Then I should receive the results
       | name | description |
       | Bell | A shiny toy |
+
+  Scenario: Multiple model classes can be indexed
+    Given a widget with the attributes
+      | name | description |
+      | Bell | A shiny toy |
+    And a gadget with the attributes
+      | name        | distraction |
+      | Smart phone | Ridiculous  |
+
+    When I index that widget
+    And I index that gadget
+    And I call Sunspot.commit
+    And I search for a widget with "Bell"
+
+    Then I should receive the results
+      | name | description |
+      | Bell | A shiny toy |
+    And if I search for a gadget with "phone"
+    Then I should receive the results
+      | name        | distraction |
+      | Smart phone | Ridiculous  |

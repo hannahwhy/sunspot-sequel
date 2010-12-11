@@ -1,7 +1,13 @@
-When /^I search for a widget with "([^"]*)"$/ do |query|
-  @results = Widget.search do
+When /^I search for a (\w+) with "([^"]*)"$/ do |model_name, query|
+  model = model_name.constantize
+
+  @results = model.search do
     keywords query
   end.results
+end
+
+Then /^if I search for a (\w+) with "([^"]*)"$/ do |model_name, query|
+  When %Q{I search for a #{model_name} with "#{query}"}
 end
 
 Then /^I should receive no results$/ do

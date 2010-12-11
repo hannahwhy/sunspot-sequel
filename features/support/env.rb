@@ -11,10 +11,25 @@ DB.create_table :widgets do
   String :description
 end
 
+DB.create_table :gadgets do
+  Integer :id, :primary_key => true
+  String :name
+  String :distraction
+end
+
 class Widget < Sequel::Model
   plugin :sunspot
 
   searchable do
     text :name, :description
+  end
+end
+
+class Gadget < Sequel::Model
+  plugin :sunspot
+
+  searchable do
+    text :name
+    string :distraction
   end
 end
