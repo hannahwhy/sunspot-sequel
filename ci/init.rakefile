@@ -1,8 +1,11 @@
 task :get_rvm_version do
-  puts(case ENV['RUBY_VERSION']
+  ruby_version = case ENV['RUBY_VERSION']
     when 'ruby18' then 'ruby-1.8.7'
     when 'ruby19' then 'ruby-1.9.2'
-  end)
+    else 'ruby-1.8.7'
+  end
+
+  puts "#{ruby_version}@sunspot-sequel"
 end
 
 REQUIRED_BUNDLER_VERSION = '>= 1.0.0'
