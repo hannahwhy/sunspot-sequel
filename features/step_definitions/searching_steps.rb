@@ -9,6 +9,11 @@ Then /^I should receive no results$/ do
 end
 
 Then /^I should receive the results$/ do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+  actual = @results.map do |result|
+    table.headers.inject({}) do |row, header|
+      row.update(header => result.send(header))
+    end
+  end
+
+  table.diff!(actual)
 end
