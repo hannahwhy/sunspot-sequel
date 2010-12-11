@@ -5,6 +5,8 @@ require 'sequel/plugins/sunspot/instance_methods'
 
 module Sequel
   module Plugins
+    ##
+    # The top-level module for sunspot-sequel.
     module Sunspot
       ##
       # Registers a Sunspot data accessor and instance adapter.
