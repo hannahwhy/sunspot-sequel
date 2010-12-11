@@ -10,10 +10,10 @@ Feature: Indexing Sequel models
       | Bell | A shiny toy |
 
     When I index that widget
-    And I search for a widget with "title:Bell"
+    And I search for a widget with "Bell"
     Then I should receive no results
     But if I call Sunspot.commit
-    And I search for a widget with "title:Bell"
+    And I search for a widget with "Bell"
     Then I should receive the results
       | name | description |
       | Bell | A shiny toy |
