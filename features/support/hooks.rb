@@ -19,6 +19,10 @@ Before do
   Sunspot.remove_all!
 end
 
+Before do
+  @objects = {}
+end
+
 at_exit do
   system('bundle exec sunspot-solr stop')
 end
