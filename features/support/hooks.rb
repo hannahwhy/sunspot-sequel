@@ -15,6 +15,10 @@ AfterConfiguration do
   end
 end
 
+Before do
+  Sunspot.remove_all!
+end
+
 at_exit do
   system('bundle exec sunspot-solr stop')
 end
