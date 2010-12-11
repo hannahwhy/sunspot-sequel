@@ -1,10 +1,16 @@
 sunspot-sequel
 ==============
 
-This gem is a Sunspot adapter for Sequel.  It provides the `.load`,
-`.load_all`, and `#id` methods required by Sunspot.  It also adds class-level
-methods to Sequel models that behave similarly to the ActiveRecord extensions
-provided by sunspot_rails.
+This gem is a Sunspot adapter for Sequel.   It provides the necessary glue code
+to use Sequel models with Sunspot.
+
+It also provides the following on Sequel models:
+
+* instance-level `index` and `index!` methods
+* class-level `searchable` and `search` methods
+
+These methods behave similarly to the ActiveRecord extensions provided by
+`sunspot_rails`.
 
 Usage
 =====
@@ -21,6 +27,15 @@ Then, in the models you want to use with Sunspot:
         ...
       end
     end
+
+To index an instance of a model:
+ 
+    widgets.each { |w| w.index }
+    Sunspot.commit
+
+Or, if you want to index and commit in one line of code:
+
+    widget.index!
 
 To search for objects of a certain type:
 
@@ -42,7 +57,7 @@ it's a good fit for your application.
 Thread safety (or lack thereof)
 -------------------------------
 
-This plugin isn't thread-safe.
+Indexing and searching with this plugin isn't thread-safe.
 
 To elaborate: This plugin delegates index and search calls to what Sunspot calls
 its singleton session, which is marked as thread-unsafe.
@@ -56,11 +71,13 @@ an adapter.)
 Models must be persisted before indexing
 ----------------------------------------
 
+This adapter does not prevent you from invoking #index or #index! on
+unpersisted models.  (I'm not yet quite sure if it should contain such a check:
+Sunspot's official ActiveRecord adapter doesn't do such a thing.)
+
 This may not actually be a limitation -- most people don't need to index
 records that haven't yet been saved somewhere -- but it's worth mentioning anyway.
 
-This adapter does not prevent you from invoking #index or #index! on
-unpersisted models.  I'm not quite sure if it should contain such a check.
 
 
 Models to be indexed cannot use composite primary keys
