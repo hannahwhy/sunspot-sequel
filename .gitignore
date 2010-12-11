@@ -3,3 +3,5 @@ pkg/*
 *.sw?
 .bundle
 Gemfile.lock
+.yardoc
+doc

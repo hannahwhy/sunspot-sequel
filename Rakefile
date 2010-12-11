@@ -1,6 +1,7 @@
+require 'cucumber/rake/task'
 require 'rake/gempackagetask'
 require 'rspec/core/rake_task'
-require 'cucumber/rake/task'
+require 'yard'
 
 gemspec = eval(File.read('sunspot-sequel.gemspec'), binding, 'sunspot-sequel.gemspec')
 
@@ -15,3 +16,4 @@ end
 desc 'Run all features'
 task 'cucumber:all' => ['cucumber:ok', 'cucumber:wip']
 
+YARD::Rake::YardocTask.new
