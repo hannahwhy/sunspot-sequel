@@ -67,6 +67,15 @@ Models to be indexed cannot use composite primary keys
 Composite primary keys are not yet compatible with Sunspot's ID generation scheme.
 
 
+Search results from `.search` are not Sequel datasets
+-----------------------------------------------------
+
+The `.search` class method on models that is installed by this plugin does not
+return Sequel datasets, so you can't use Sequel's dataset filtering methods on
+those result sets.  This is a consequence of the way Sunspot currently reifies
+Solr results.
+
+
 Copyright
 =========
 
