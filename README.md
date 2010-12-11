@@ -29,6 +29,8 @@ To search for objects of a certain type:
       ...
     end
 
+Of course, all of Sunspot's usual indexing and searching methods also work.
+
 
 Limitations
 ===========
