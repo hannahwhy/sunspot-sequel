@@ -13,4 +13,8 @@ end
 
 class Widget < Sequel::Model
   plugin :sunspot
+
+  searchable do
+    text :name, :description
+  end
 end
