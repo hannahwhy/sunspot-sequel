@@ -5,6 +5,7 @@ gemspec
 
 group :development do
   gem 'autotest'
+  gem 'ci_reporter'
   gem 'cucumber'
   gem 'extlib'
   gem 'rdiscount'
