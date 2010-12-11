@@ -1,3 +1,4 @@
+require 'sequel/plugins/sunspot/class_methods'
 require 'sequel/plugins/sunspot/data_accessor'
 require 'sequel/plugins/sunspot/instance_adapter'
 require 'sequel/plugins/sunspot/instance_methods'
