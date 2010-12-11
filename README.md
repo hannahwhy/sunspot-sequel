@@ -29,11 +29,13 @@ To search for objects of a certain type:
       ...
     end
 
+
 Limitations
 ===========
 
 This plugin has some limitations that you should know about before deciding if
 it's a good fit for your application.
+
 
 Thread safety (or lack thereof)
 -------------------------------
@@ -47,6 +49,23 @@ Thread safety is desirable, but achieving that will require changes to Sunspot.
 (It's probably possible to use Sunspot in a thread-safe manner via manual management of
 sessions, but issues like this are something that are better handled outside of
 an adapter.)
+
+
+Models must be persisted before indexing
+----------------------------------------
+
+This may not actually be a limitation -- most people don't need to index
+records that haven't yet been saved somewhere -- but it's worth mentioning anyway.
+
+This adapter does not prevent you from invoking #index or #index! on
+unpersisted models.  I'm not quite sure if it should contain such a check.
+
+
+Models to be indexed cannot use composite primary keys
+------------------------------------------------------
+
+Composite primary keys are not yet compatible with Sunspot's ID generation scheme.
+
 
 Copyright
 =========
