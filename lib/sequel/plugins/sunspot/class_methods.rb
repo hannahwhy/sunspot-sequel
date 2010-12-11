@@ -15,5 +15,12 @@ module Sequel::Plugins::Sunspot
     def searchable(&block)
       ::Sunspot.setup(self, &block)
     end
+
+    ##
+    # Executes `Sunspot.search` on instances of the model that extends this
+    # module.
+    def search(&block)
+      ::Sunspot.search(self, &block)
+    end
   end
 end

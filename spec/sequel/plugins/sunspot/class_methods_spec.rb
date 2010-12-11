@@ -11,5 +11,18 @@ module Sequel::Plugins::Sunspot
         widget.searchable
       end
     end
+
+    describe '#search' do
+      it 'searches for instances of that model' do
+        invoked = nil
+        block = lambda { |v| invoked = v }
+
+        ::Sunspot.should_receive(:search).and_yield(true)
+
+        widget.search(&block)
+
+        invoked.should be_true
+      end
+    end
   end
 end
